@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SalemDance.Models.Venue>
+
+@{
+    ViewBag.Title = "Venues";
+}
+        
+<h2>List of Venues</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p align="right">
+        Search for specific venue: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VenueName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VenueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Write a Review", "AddReview", new { id = item.VenueID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.VenueID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VenueID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VenueID })
+            </td>
+        </tr>
+    }
+
+</table>
+   

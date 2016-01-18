@@ -1,0 +1,88 @@
+﻿@model SalemDance.ViewModels.DanceMovesData
+
+@{
+    ViewBag.Title = "Dance Styles and Moves";
+}
+
+<h2>Dance Styles and Moves</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Style Name
+        </th>
+        <th>
+            Music Genre
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.DanceStyles)
+    {
+        string selectedRow = "";
+        if (item.DanceStyleID == ViewBag.DanceStyleID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.StyleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MusicGenre)
+            </td>
+            <td>
+                @Html.ActionLink("See Moves For This Style", "Index", new { id = item.DanceStyleID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.DanceStyleID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DanceStyleID })
+            </td>
+        </tr>
+    }
+
+</table>
+<br>
+
+@if (Model.DanceMoves != null)
+{
+    <h3>Dance Moves For Selected Style</h3>
+
+    <p>
+        @Html.ActionLink("Add New Move", "AddMove", new { id = ViewBag.DanceStyleID })
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Dance Move</th>
+            <th>Link to Example</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.DanceMoves)
+        {
+            string selectedRow = "";
+            if (item.DanceMoveID == ViewBag.DanceMoveID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @item.DanceMoveName
+                </td>
+                <td>
+                    <a href="@item.Link">@item.Link</a>
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "EditMove", new { id = item.DanceMoveID }) |
+                    @Html.ActionLink("Delete", "DeleteMove", new { id = item.DanceMoveID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+        
+   

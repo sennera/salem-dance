@@ -1,0 +1,157 @@
+﻿@*@@model SalemDance.ViewModels.EventIndexData*@
+@model IEnumerable<SalemDance.Models.Event>
+
+@{
+    ViewBag.Title = "Dance Events Near Salem, OR";
+}
+
+<h2>Dance Events</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+
+    <p> Sort by: @Html.DropDownList("SortOrder", null, htmlAttributes: new { @class = "form-control" })
+         @*<p> Sort by: @Html.TextBox("SortOrder")*@
+          <input type="submit" value="Sort" /></p>
+
+
+
+}
+
+
+  
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Venue Name", "Index", new { sortOrder = ViewBag.VenueSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Event Name", "Index", new { sortOrder = ViewBag.EventSortParmm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Days Open
+        </th>
+        <th>
+            @Html.ActionLink("Style Name", "Index", new { sortOrder = ViewBag.DanceSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) { 
+@*@foreach (var item in Model.Events)
+{
+    string selectedRow = "";
+    if (item.EventID == ViewBag.EventID)
+    {
+        selectedRow = "success";
+    }*@
+    <tr> 
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.Venue.VenueName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventName)
+        </td>
+        <td>
+            @{
+                foreach (var day in item.DaysOpen)
+                {
+                    @day.DayOfWeek.ToString() <br />
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanceStyle.StyleName) 
+        </td>
+        <td>
+            @Html.ActionLink("See More About This Event", "Details", new { id = item.EventID }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.EventID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EventID })
+        </td>
+    </tr>
+}
+
+</table>
+
+@*@if (Model.Events != null)
+{
+    <h3>Event Details</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Venue Name</th>
+            <th>Event Name</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Description</th>
+            <th>Style Name</th>
+            <th>Music Genre</th>
+            <th>Entry Cost</th>
+            <th>Food Served</th>
+            <th>Age Restriction</th>
+            <th>Minimum Age</th>
+            <th>Has Lessons</th>
+        </tr>
+        @foreach (var items in Model.Events)
+        {
+            string selecteRow = "";
+            if (items.EventID == ViewBag.EventID)
+            {
+                selecteRow = "success";
+            }
+            <tr class="@selecteRow">
+            
+                <td>
+                    @Html.ActionLink("Details", "Index", new  { eventID = items.EventID})
+                </td>
+                <td>
+                   @items.Venue.VenueName
+                </td>
+                <td>
+                    @items.EventName
+                </td>
+                <td>
+                    @items.StartTime
+                </td>
+                <td>
+                    @items.EndTime
+                </td>
+                <td>
+                    @items.Description
+                </td>
+                <td>
+                    @items.DanceStyle.StyleName
+                </td>
+                <td>
+                    @items.MusicGenre
+                </td>
+                <td>
+                    @items.EntryCost
+                </td>
+                <td>
+                    @items.FoodServed
+                </td>
+                <td>
+                    @items.AgeRestriction
+                </td>
+                <td>
+                    @items.MinAge
+                </td>
+                <td>
+                    @items.HasLessons
+                </td>
+            
+            </tr>
+        }
+    </table>
+}*@

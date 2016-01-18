@@ -1,0 +1,151 @@
+﻿@model SalemDance.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.VenueName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Venue.VenueName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <table>
+                <tr>
+                    @{
+                        int cnt = 0;
+                        List<SalemDance.ViewModels.DaysWithEventData> days = ViewBag.DaysOpen;
+
+                        foreach (var entry in days)
+                        {
+                            if (cnt++ % 1 == 0)
+                            {
+                                @:</tr><tr>
+                                }
+                                @:<td>
+                                    <input type="checkbox"
+                                           disabled="disabled"
+                                           name="selectedDays"
+                                           value=@entry.DayID
+                                           @(Html.Raw(entry.Assigned ? "checked=\"checked\"" : "")) />
+                                    @entry.DayOpen.ToString()
+                                    @:</td>
+                        }
+                        @:</tr>
+                    }
+                </table>
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DanceStyle.StyleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanceStyle.StyleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MusicGenre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MusicGenre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodServed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodServed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeRestriction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgeRestriction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasLessons)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasLessons)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Write a Review for this Event", "AddReview", new { id = Model.EventID }) 
+</p>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EventID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

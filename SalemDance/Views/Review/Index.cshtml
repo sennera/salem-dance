@@ -1,0 +1,97 @@
+﻿@model IEnumerable<SalemDance.Models.Review>
+
+@{
+    ViewBag.Title = "Reviews";
+}
+
+<h2>Reviews</h2>
+
+<p>
+    See reviews here. To write a review, go to the event or venue you want to review.
+</p>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+@*@using (Html.BeginForm())
+{
+    <p>
+        Select Event: @Html.DropDownList("Events", "select a event")
+    </p>
+}*@
+@*@using (Html.BeginForm())
+{
+    <p>
+        only use one select event, not both, second is from tutorial
+        Select Event: @Html.DropDownListFor(model => model, (SelectList)ViewBag.selectedEvents)
+        Select Event: @Html.DropDownList("Countries", "select a country")
+        <input type="submit" value="Filter" />
+    </p>
+}*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Venue.VenueName)
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stars)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event.EventName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Venue.VenueName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewerLastName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Stars)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Timestamp)
+        </td>*@
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReviewID }) |*@
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })*@
+        </td>
+    </tr>
+}
+
+</table>

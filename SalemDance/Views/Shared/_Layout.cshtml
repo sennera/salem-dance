@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - DanceNearU</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="with-sidebar">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("DanceNearU", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Events", "Index", "Event")</li>
+                    <li>@Html.ActionLink("Venues", "Index", "Venue")</li>
+                    <li>@Html.ActionLink("Dance Styles", "Index", "DanceStyle")</li>
+                    <li>@Html.ActionLink("Review", "Index", "Review")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content-sidebar">
+        <div class="row">
+            <div class="col-md-2" align="center">
+                <ul class="nav nav-stacked" id="leftCol">
+                    <li><img src="~/Images/breakdance.png" alt="dance pic" style="height:100px"></li>
+                    <li><img src="~/Images/graceful.png" alt="dance pic" style="height:100px"></li>
+                    <li><img src="~/Images/ballroom_partners.png" alt="dance pic" style="height:100px"></li>
+                    <li><img src="~/Images/disco.jpg" alt="dance pic" style="height:100px"></li>
+                    <li><img src="~/Images/jump.jpg" alt="dance pic" style="height:100px"></li>
+                    <li><img src="~/Images/partner1.jpeg" alt="dance pic" style="height:100px"></li>
+                </ul>
+            </div>
+
+            <div class="col-md-10">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - DanceNearU</p>
+                </footer>
+            </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+        </div>
+    </div>
+</body>
+</html>

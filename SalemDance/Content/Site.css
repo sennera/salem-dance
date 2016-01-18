@@ -1,0 +1,100 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    /*padding-left: 0px;*/
+    /*margin-left: 0px;*/
+    /* Change the background color */
+    background-color: #003333;
+    color: #E8E8E8;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.body-content-sidebar {
+    padding-left: 0px;
+    padding-right: 15px;
+    margin-left:0px;
+}
+
+body .with-sidebar {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    margin-left: 0px;
+    /* Change the background color */
+    background-color: #003333;
+    color: #E8E8E8;
+}
+
+/* Set padding to keep content from hitting the edge on right but no padding 
+    on left (for when sidebar is there) */
+.row {
+    padding-left: 0px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.jumbotron {
+    color: #003333;
+    background: white; 
+}
+
+jumbotron h1 {
+    color: #003333;
+}
+
+.table tr.success  {
+    color: black;
+    font-weight:700;
+}
+
+#leftCol {
+    background-color: white;
+    position: fixed;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	margin-top:30px;
+  	width:228px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}
+
+#sidebar li.active {
+  	border:0 #eee solid;
+  	border-right-width:4px;
+}
+
+input {
+    color:black;
+}
+
+.big-text-box {
+    width: 90px;
+    height: 200px;
+    padding: 5px;
+}
